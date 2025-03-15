@@ -50,8 +50,8 @@ export class AuthController {
   @ResponseMessage('Get user information')
   @Get('/account')
   async handleGetAccount(@User() user: IUser) {
-    const temp = (await this.rolesService.findOne(user.role._id)) as any;
-    user.permissions = temp.permission;
+    const temp = (await this.rolesService.findOne(user.role._id as any)) as any;
+    user.permissions = temp.permissions;
     return { user };
   }
 
